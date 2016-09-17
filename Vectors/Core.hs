@@ -1,4 +1,4 @@
-module Engine.Vector where
+module Vectors.Core where
 
 import Graphics.UI.GLUT
 

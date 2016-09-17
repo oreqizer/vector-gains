@@ -2,7 +2,7 @@ module Main where
 
 import Graphics.UI.GLUT
 
-import Engine.Vector
+import Vectors.Core
 
 displayPoint :: Vertex3f -> DisplayCallback
 displayPoint v = do
