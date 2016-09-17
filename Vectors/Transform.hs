@@ -1,4 +1,4 @@
-module Engine.Transform where
+module Vectors.Transform where
 
 import Graphics.UI.GLUT
 
@@ -10,8 +10,8 @@ type Matrix3 = (Vector3f, Vector3f, Vector3f)
 prodMatrixRow :: Vector3f -> Vector3f -> GLfloat
 prodMatrixRow (Vector3 v1 v2 v3) (Vector3 m1 m2 m3) = v1 * m1 + v2 * m2 + v3 * m3
 
-prodMatrix :: Vector3f -> Matrix3 -> Vector3f
-prodMatrix v (m1, m2, m3) = Vector3 r1 r2 r3
+prodMatrix :: Matrix3 -> Vector3f -> Vector3f
+prodMatrix (m1, m2, m3) v = Vector3 r1 r2 r3
     where
         r1 = prodMatrixRow v m1
         r2 = prodMatrixRow v m2
@@ -38,14 +38,14 @@ yzRotMatrix d = (m1, m2, m3)
         m2 = Vector3 0 (cos $ rads d) (-(sin $ rads d))
         m3 = Vector3 0 (sin $ rads d) (cos $ rads d)
 
-scale :: Vector3f -> GLfloat -> GLfloat -> GLfloat -> Vector3f
-scale (Vector3 x y z) xs ys zs = Vector3 (x * xs) (y * ys) (z * zs)
+scalePoint :: GLfloat -> GLfloat -> GLfloat -> Vector3f -> Vector3f
+scalePoint xs ys zs (Vector3 x y z) = Vector3 (x * xs) (y * ys) (z * zs)
 
-rotateXY :: Vector3f -> GLfloat -> Vector3f
-rotateXY v = prodMatrix v . xyRotMatrix
+rotateXY :: GLfloat -> Vector3f -> Vector3f
+rotateXY deg = prodMatrix $ xyRotMatrix deg
 
-rotateXZ :: Vector3f -> GLfloat -> Vector3f
-rotateXZ v = prodMatrix v . xzRotMatrix
+rotateXZ :: GLfloat -> Vector3f -> Vector3f
+rotateXZ deg = prodMatrix $ xzRotMatrix deg
 
-rotateYZ :: Vector3f -> GLfloat -> Vector3f
-rotateYZ v = prodMatrix v . yzRotMatrix
+rotateYZ :: GLfloat -> Vector3f -> Vector3f
+rotateYZ deg = prodMatrix $ yzRotMatrix deg

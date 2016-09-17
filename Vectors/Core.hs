@@ -6,6 +6,12 @@ type Vector3f = Vector3 GLfloat
 
 type Vertex3f = Vertex3 GLfloat
 
+pointToVector :: Vertex3f -> Vector3f
+pointToVector (Vertex3 x y z) = Vector3 x y z
+
+vectorToPoint :: Vector3f -> Vertex3f
+vectorToPoint (Vector3 x y z) = Vertex3 x y z
+
 -- Points
 
 addVectorToPoint :: Vertex3f -> Vector3f -> Vector3f
