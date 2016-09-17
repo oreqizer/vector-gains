@@ -1,6 +1,6 @@
-module Vanilla.Vector where
+module Engine.Vector where
 
-import Graphics.Rendering.OpenGL
+import Graphics.UI.GLUT
 
 type Vector3f = Vector3 GLfloat
 
