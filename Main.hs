@@ -41,17 +41,17 @@ keyD orig curr = do
 
 keyA :: IORef [Vertex3f] -> IO ()
 keyA points = do
-    modifyIORef points . map $ vectorToPoint . scalePoint 0.5 0.5 0.5 . pointToVector
+    modifyIORef points . map $ mapPoint $ scalePoint 0.5 0.5 0.5
     readIORef points >>= paintPoints
 
 keyS :: IORef [Vertex3f] -> IO ()
 keyS points = do
-    modifyIORef points . map $ vectorToPoint . scalePoint 2 2 2 . pointToVector
+    modifyIORef points . map $ mapPoint $ scalePoint 2 2 2
     readIORef points >>= paintPoints
 
 keyR :: IORef [Vertex3f] -> IO ()
 keyR points = do
-    modifyIORef points . map $ vectorToPoint . rotateXY 15 . pointToVector
+    modifyIORef points . map $ mapPoint $ rotateXY 15
     readIORef points >>= paintPoints
 
 keyboard :: IORef [Vertex3f] -> IORef [Vertex3f] -> KeyboardCallback

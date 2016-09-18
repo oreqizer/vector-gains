@@ -12,6 +12,9 @@ pointToVector (Vertex3 x y z) = Vector3 x y z
 vectorToPoint :: Vector3f -> Vertex3f
 vectorToPoint (Vector3 x y z) = Vertex3 x y z
 
+mapPoint :: (Vector3f -> Vector3f) -> Vertex3f -> Vertex3f
+mapPoint f (Vertex3 x y z) = vectorToPoint $ f (Vector3 x y z)
+
 -- Points
 
 addVectorToPoint :: Vertex3f -> Vector3f -> Vector3f
