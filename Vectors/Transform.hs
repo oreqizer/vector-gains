@@ -22,23 +22,23 @@ prodMatrix (m1, m2, m3) v = Vector3 r1 r2 r3
 xyRotMatrix :: GLfloat -> Matrix3
 xyRotMatrix d = (m1, m2, m3)
     where
-        m1 = ((cos $ rads d), (-(sin $ rads d)), 0)
-        m2 = ((sin $ rads d), (cos $ rads d), 0)
+        m1 = (cos $ rads d, -(sin $ rads d), 0)
+        m2 = (sin $ rads d, cos $ rads d, 0)
         m3 = (0, 0, 1)
 
 xzRotMatrix :: GLfloat -> Matrix3
 xzRotMatrix d = (m1, m2, m3)
     where
-        m1 = ((cos $ rads d), 0, (sin $ rads d))
+        m1 = (cos $ rads d, 0, sin $ rads d)
         m2 = (0, 1, 0)
-        m3 = ((-(sin $ rads d)), 0, (cos $ rads d))
+        m3 = (-(sin $ rads d), 0, cos $ rads d)
 
 yzRotMatrix :: GLfloat -> Matrix3
 yzRotMatrix d = (m1, m2, m3)
     where
         m1 = (1, 0, 0)
-        m2 = (0, (cos $ rads d), (-(sin $ rads d)))
-        m3 = (0, (sin $ rads d), (cos $ rads d))
+        m2 = (0, cos $ rads d, -(sin $ rads d))
+        m3 = (0, sin $ rads d, cos $ rads d)
 
 scalePoint :: GLfloat -> GLfloat -> GLfloat -> Vector3f -> Vector3f
 scalePoint xs ys zs (Vector3 x y z) = Vector3 (x * xs) (y * ys) (z * zs)
